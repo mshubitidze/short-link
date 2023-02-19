@@ -54,17 +54,17 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center gap-10 border-blue-200 bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 justify-center items-center p-4 w-1/3"
+          className="flex flex-col gap-4 justify-center items-center p-4 w-5/6 md:w-1/3"
         >
-          <label className="text-4xl text-white">Enter a valid long url</label>
+          <label className="text-3xl md:text-4xl text-white">Enter a valid long url</label>
           <input
             onChange={(e) => setLongUrl(e.target.value)}
-            className="p-4 w-full bg-blue-200 rounded-xl"
+            className="p-4 w-full text-indigo-500 text-lg font-bold bg-blue-200 rounded-xl"
             type="text"
             value={longUrl}
           />
           <button
-            className="p-4 w-1/3 text-2xl text-white rounded-full bg-white/10 disabled:bg-white/5"
+            className="p-4 w-2/3 md:w-1/3 text-2xl text-white rounded-full bg-white/10 disabled:bg-white/5"
             type="submit"
             disabled={!z.string().url().safeParse(longUrl).success}
           >
@@ -73,16 +73,16 @@ const Home: NextPage = () => {
         </form>
         {shortUrl !== "" && (
           <div className="flex flex-col gap-2 p-4 rounded-xl border border-white">
-            <p className="p-4 text-3xl text-white bg-clip-text rounded-xl">
+            <p className="p-4 text-xl md:text-3xl text-center items-center text-white bg-clip-text rounded-xl">
               Success!
             </p>
-            <div className="flex flex-row gap-4 items-center p-4">
+            <div className="flex flex-col lg:flex-row gap-4 items-center p-4">
               <p className="text-2xl text-white">Long: </p>
-              <p className="py-2 px-4 text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-green-500 to-blue-500 border-2">
+              <p className="py-2 px-4 rounded-xl text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-green-500 to-blue-500 border-2">
                 {fetchLongUrl.data}
               </p>
               <p className="text-2xl text-white">Short: </p>
-              <p className="py-2 px-4 text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-green-500 to-blue-500 rounded-xl border-2">
+              <p className="py-2 px-4 text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-green-500 to-blue-500 rounded-xl border-2">
                 <Link href={`${url}/${shortUrl}`} target="_blank">
                   {url}/{shortUrl}
                 </Link>
